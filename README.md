@@ -1,198 +1,126 @@
-# ChariBlock - Decentralized Blockchain Charity Platform
+# ChariBlock 🔗
 
-## Overview
+> A decentralized charity platform built on Ethereum — making every donation transparent, secure, and trustworthy.
 
-**ChariBlock** is a blockchain-based charity platform that brings **transparency**, **security**, and **trust** to charitable donations. Built on Ethereum, ChariBlock ensures every donation is tracked on-chain, providing donors with complete visibility and accountability.
+---
+
+## What is ChariBlock?
+
+ChariBlock lets donors give cryptocurrency directly to verified charities. Every transaction is recorded on the blockchain, so anyone can verify where funds go — no middlemen, no hidden fees, full accountability.
+
+---
 
 ## Features
 
-### For Donors
+**For Donors**
 
-- **MetaMask Wallet Integration** - Connect and donate with Web3 wallets
-- **Browse Verified Charities** - Explore KYC-verified charity campaigns
-- **Instant Donations** - Make secure cryptocurrency donations
-- **Donation Receipts** - Get blockchain transaction hashes as proof
-- **Donation History** - Track all your charitable contributions
+- Connect MetaMask wallet and donate instantly
+- Browse KYC-verified charity campaigns
+- Get blockchain transaction hash as donation proof
+- Track your full donation history
 
-### For Charity Organizations
+**For Charities**
 
-- **Create Charity Campaigns** - Launch fundraising campaigns on-chain
-- **KYC Verification** - Submit documents for legitimacy verification
-- **IPFS Document Storage** - Secure, decentralized document management
-- **Direct Fund Receipt** - Receive donations directly to your wallet
+- Launch fundraising campaigns on-chain
+- Submit KYC documents for verification
+- Receive funds directly to your wallet
 
-### For Platform Admins
+**For Admins**
 
-- **Charity Verification System** - Review and approve charity applications
-- **Document Verification** - Access uploaded KYC documents
-- **Platform Controls** - Manage platform fee and emergency controls
-- **Analytics Dashboard** - Monitor platform activity and statistics
+- Review and approve charity applications
+- Monitor platform activity via analytics dashboard
+- Emergency controls and platform fee management
 
 ---
 
 ## Tech Stack
 
-### Frontend
-
-- **Next.js 14** - React framework for production
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - Beautiful, accessible UI components
-- **Web3.js / Ethers.js** - Ethereum blockchain interaction
-- **MetaMask SDK** - Wallet connection
-
-### Backend
-
-- **Django 4.2** - Python web framework
-- **Django REST Framework** - RESTful API
-- **SQLite/PostgreSQL** - Database
-- **Pinata** - IPFS file storage
-- **CORS** - Cross-origin resource sharing
-
-### Blockchain
-
-- **Solidity** - Smart contract programming
-- **Hardhat** - Ethereum development environment
-- **OpenZeppelin** - Secure smart contract library
-- **Sepolia Testnet** - Ethereum test network
-- **Etherscan** - Blockchain explorer integration
+| Layer           | Technologies                                     |
+| --------------- | ------------------------------------------------ |
+| Frontend        | Next.js 14, TypeScript, Tailwind CSS, shadcn/ui  |
+| Blockchain      | Web3.js / Ethers.js, MetaMask SDK                |
+| Backend         | Django 4.2, Django REST Framework, PostgreSQL    |
+| Storage         | Pinata (IPFS)                                    |
+| Smart Contracts | Solidity, Hardhat, OpenZeppelin, Sepolia Testnet |
 
 ---
 
-## Quick Start
+## Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+- Node.js v16+
+- Python v3.8+
+- MetaMask browser extension
+- Git
 
-- **Node.js** (v16 or higher)
-- **Python** (v3.8 or higher)
-- **npm** or **yarn**
-- **MetaMask** browser extension
-- **Git**
+---
 
-### 1. Clone the Repository
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/kushal2060/Charity-Donation-BLOCKCHAIN-System
-
 ```
 
-### 2. Frontend Setup (Next.js)
+---
+
+### 2. Frontend Setup
 
 ```bash
-# Install dependencies
 npm install
-
-# Create environment file
 cp .env.example .env.local
-
-# Configure environment variables in .env.local
-# NEXT_PUBLIC_BACKEND_API=http://localhost:8000/api
-# NEXT_PUBLIC_CONTRACT_ADDRESS=your_deployed_contract_address
-# NEXT_PUBLIC_CHAIN_ID=11155111 # Sepolia testnet
-
-# Run development server
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the application.
-
-### 3. Backend Setup (Django)
-
-```bash
-cd backend
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-# venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Setup database
-python manage.py migrate
-
-# Create superuser for admin access
-python manage.py createsuperuser
-
-# Run development server
-python manage.py runserver
-```
-
-The API will be available at `http://localhost:8000`
-
-### 4. Smart Contract Setup (Hardhat)
-
-```bash
-cd contracts
-
-# Install dependencies
-npm install
-
-# Create environment file
-cp .env.example .env
-
-# Configure .env with your settings:
-# PRIVATE_KEY=your_wallet_private_key
-# SEPOLIA_RPC_URL=your_alchemy_or_infura_url
-# ETHERSCAN_API_KEY=your_etherscan_api_key
-
-# Compile contracts
-npx hardhat compile
-
-# Run tests
-npm run test
-
-# Deploy to local network
-npx hardhat node  # In separate terminal
-npm run deploy:local
-
-# Deploy to Sepolia testnet
-npm run deploy:sepolia
-```
-
----
-
-## Security Features
-
-- **ReentrancyGuard** - Prevents reentrancy attacks
-- **Pausable Contracts** - Emergency stop mechanism
-- **Access Control** - Role-based permissions
-- **Input Validation** - Comprehensive parameter checks
-- **Direct Transfers** - Funds sent directly to charity wallets
-- **IPFS Storage** - Decentralized document storage
-- **KYC Verification** - Admin approval required
-
----
-
-## Environment Variables
-
-### Frontend (.env.local)
+Configure `.env.local`:
 
 ```env
 NEXT_PUBLIC_BACKEND_API=http://localhost:8000/api
-NEXT_PUBLIC_CONTRACT_ADDRESS=0x...
+NEXT_PUBLIC_CONTRACT_ADDRESS=your_contract_address
 NEXT_PUBLIC_CHAIN_ID=11155111
 ```
 
-### Backend (.env)
+Visit `http://localhost:3000`
+
+---
+
+### 3. Backend Setup
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+Configure `.env`:
 
 ```env
 SECRET_KEY=your-secret-key
 DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:3000
 PINATA_API_KEY=your-pinata-api-key
 PINATA_SECRET_KEY=your-pinata-secret
+CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
-### Contracts (.env)
+API runs at `http://localhost:8000`
+
+---
+
+### 4. Smart Contracts Setup
+
+```bash
+cd contracts
+npm install
+cp .env.example .env
+npx hardhat compile
+npm run test
+```
+
+Configure `.env`:
 
 ```env
 PRIVATE_KEY=your-wallet-private-key
@@ -200,4 +128,23 @@ SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY
 ETHERSCAN_API_KEY=your-etherscan-api-key
 ```
 
+Deploy:
+
+```bash
+# Local
+npx hardhat node
+npm run deploy:local
+
+# Sepolia Testnet
+npm run deploy:sepolia
+```
+
 ---
+
+## Security
+
+- ReentrancyGuard against reentrancy attacks
+- Pausable contracts for emergency stops
+- Role-based access control
+- KYC verification required for charities
+- Funds sent directly to charity wallets — never held by the platform
